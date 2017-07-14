@@ -7,3 +7,6 @@ class Planet(models.Model):
     min_temperature = models.FloatField()
     max_temperature = models.FloatField()
     fields = models.IntegerField()
+
+    def __str__(self):
+        return self.name

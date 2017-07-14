@@ -12,3 +12,11 @@ class ResourceRequirement(models.Model):
     building_level = models.ForeignKey('BuildingLevel', related_name='resources', null=True, blank=True)
     resource = models.ForeignKey('Resource')
     amount = models.IntegerField()
+
+    def __str__(self):
+        type_string = ''
+        if self.type == 'technology':
+            type_string = '%s %d' % (self.technology_level.technology.name, self.technology_level.level)
+        if self.type == 'building':
+            type_string = '%s %d' % (self.building_level.building.name, self.building_level.level)
+        return '%s - %d %s' % (type_string, self.amount, self.resource)
