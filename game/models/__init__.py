@@ -6,3 +6,4 @@ from .resourcerequirement import *
 from .buildinglevel import *
 from .building import *
 from .location import *
+from .vessel import *

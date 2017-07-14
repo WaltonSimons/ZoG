@@ -8,7 +8,7 @@ class Location(models.Model):
     planet = models.ForeignKey('Planet', related_name='location', null=True, blank=True)
 
     def __str__(self):
-        return '%d-%d-%d' % (self.sector, self.system, self.planet)
+        return '%d-%d-%d' % (self.sector, self.system, self.orbit)
 
     @staticmethod
     def get_system(sector, system):
@@ -17,8 +17,8 @@ class Location(models.Model):
 
     @staticmethod
     def create_locations(max_sectors, max_systems, max_planets):
-        for x in range(1, max_sectors):
-            for y in range(1, max_systems):
-                for z in range(1, max_planets):
-                    Location.objects.create(sector=x, system=y, planet=z)
+        for x in range(1, max_sectors+1):
+            for y in range(1, max_systems+1):
+                for z in range(1, max_planets+1):
+                    Location.objects.create(sector=x, system=y, orbit=z)
 
