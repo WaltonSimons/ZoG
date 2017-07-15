@@ -7,3 +7,6 @@ from .buildinglevel import *
 from .building import *
 from .location import *
 from .vessel import *
+from .planeteffect import *
+from .playereffect import *
+from .player import *

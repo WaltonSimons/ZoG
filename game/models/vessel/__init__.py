@@ -1,5 +1,5 @@
 from .engine import *
 from .frame import *
-from .vessel import *
+from .vesseltemplate import *
 from .weapon import *
 from .utility import *

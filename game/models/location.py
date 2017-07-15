@@ -1,4 +1,5 @@
 from django.db import models
+from .planet import Planet
 
 
 class Location(models.Model):
@@ -16,9 +17,18 @@ class Location(models.Model):
         return res
 
     @staticmethod
+    def get_planet(sector, system, orbit):
+        location = Location.objects.filter(sector=sector, system=system, orbit=orbit)
+        if location:
+            res = location[0].planet
+        else:
+            res = None
+        return res
+
+    @staticmethod
     def create_locations(max_sectors, max_systems, max_planets):
         for x in range(1, max_sectors+1):
             for y in range(1, max_systems+1):
                 for z in range(1, max_planets+1):
-                    Location.objects.create(sector=x, system=y, orbit=z)
-
+                    planet = Planet.create_random_planet()
+                    Location.objects.create(sector=x, system=y, orbit=z, planet=planet)
